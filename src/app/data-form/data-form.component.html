@@ -1,0 +1,310 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3">
+
+  <!-- <div class="col-md-12">
+    <label for="name" class="form-label">Name</label>
+    <input
+      formControlName="name"
+      [ngClass]="getCssClassInvalid('name')"
+      type="text"
+      class="form-control"
+      id="name">
+    <div *ngIf="isControlInvalid('name') && getControl('name')?.hasError('required')" class="invalid-feedback">
+      Name is required.
+    </div>
+    <div *ngIf="isControlInvalid('name') && getControl('name')?.hasError('minlength')" class="invalid-feedback">
+      Name must have a minimum of 3 characters.
+    </div>
+    <div *ngIf="isControlInvalid('name') && getControl('name')?.hasError('maxlength')" class="invalid-feedback">
+      Name must have a maximum of 100 characters.
+    </div>
+    <app-error-message [control]="getControl('name')" label="Name" class="invalid-feedback"></app-error-message>
+  </div> -->
+
+  <app-input-field
+    formControlName="name"
+    [cssClass]="getCssClassInvalid('name')"
+    id="name"
+    label="Name"
+    [control]="getControl('name')"
+    class="col-md-12">
+  </app-input-field>
+
+  <!-- <div class="col-md-12">
+    <label for="email" class="form-label">Email</label>
+    <input
+        formControlName="email"
+        [ngClass]="getCssClassInvalid('email')"
+        type="email"
+        class="form-control"
+        id="email">
+        <div *ngIf="isControlInvalid('email') && getControl('email')?.hasError('required')" class="invalid-feedback">
+          Email is required.
+        </div>
+        <div *ngIf="isControlInvalid('email') && getControl('email')?.hasError('email')" class="invalid-feedback">
+          Email is invalid.
+        </div>
+        <div *ngIf="isControlInvalid('email') && getControl('email')?.hasError('emailexists')" class="invalid-feedback">
+          Email already exists.
+        </div>
+        <app-error-message [control]="getControl('email')" label="Email" class="invalid-feedback"></app-error-message>
+        <div *ngIf="getControl('email')?.status === 'PENDING'" class="text-warning">
+          Validating email.
+        </div>
+        <div *ngIf="getControl('email')?.status === 'VALID'" class="text-success">
+          Email is valid.
+        </div>
+  </div> -->
+
+  <app-input-field
+    formControlName="email"
+    [cssClass]="getCssClassInvalid('email')"
+    id="email"
+    label="Email"
+    [control]="getControl('email')"
+    class="col-md-12">
+  </app-input-field>
+
+  <!-- <div class="col-md-12">
+    <label for="confirmEmail" class="form-label">Confirm Email</label>
+    <input
+        formControlName="confirmEmail"
+        [ngClass]="getCssClassInvalid('confirmEmail')"
+        type="confirmEmail"
+        class="form-control"
+        id="confirmEmail">
+    <div *ngIf="isControlInvalid('confirmEmail') && form.get('confirmEmail')?.hasError('equalsTo')" class="invalid-feedback">
+      The emails must be the same.
+    </div>
+    <app-error-message [control]="form.get('confirmEmail')" label="Confirm Email" class="invalid-feedback"></app-error-message>
+  </div> -->
+
+  <app-input-field
+    formControlName="confirmEmail"
+    [cssClass]="getCssClassInvalid('confirmEmail')"
+    id="confirmEmail"
+    label="Confirm Email"
+    [control]="getControl('confirmEmail')"
+    class="col-md-12">
+  </app-input-field>
+
+  <div class="col-md-12">
+    <div formGroupName="address" class="row g-3">
+
+      <div class="col-md-3">
+        <label for="zipCode" class="form-label">ZIP Code</label>
+        <input
+            formControlName="zipCode"
+            [ngClass]="getCssClassInvalid('address.zipCode')"
+            type="text"
+            class="form-control"
+            id="zipCode">
+        <!-- <div *ngIf="isControlInvalid('address.zipCode') && form.get('address.zipCode')?.hasError('required')" class="invalid-feedback">
+          ZIP Code is required.
+        </div>
+        <div *ngIf="isControlInvalid('address.zipCode') && form.get('address.zipCode')?.hasError('zipCode')" class="invalid-feedback">
+          ZIP Code is invalid.
+        </div>     -->
+        <app-error-message [control]="form.get('address.zipCode')" label="ZIP Code" class="invalid-feedback"></app-error-message>
+      </div>
+
+      <div class="col-md-3">
+        <label for="number" class="form-label">Number</label>
+        <input
+            formControlName="number"
+            [ngClass]="getCssClassInvalid('address.number')"
+            type="number"
+            class="form-control"
+            id="number">
+        <!-- <div *ngIf="isControlInvalid('address.number')" class="invalid-feedback">
+          Number is required.
+        </div> -->
+        <app-error-message [control]="form.get('address.number')" label="Number" class="invalid-feedback"></app-error-message>
+      </div>
+
+      <div class="col-md-6">
+        <label for="complement" class="form-label">Complement</label>
+        <input
+            formControlName="complement"
+            type="text"
+            class="form-control"
+            id="complement">
+      </div>
+
+      <div class="col-md-12">
+        <label for="street" class="form-label">Street</label>
+        <input
+            formControlName="street"
+            [ngClass]="getCssClassInvalid('address.street')"
+            type="text"
+            class="form-control"
+            id="street">
+        <!-- <div *ngIf="isControlInvalid('address.street')" class="invalid-feedback">
+          Street is required.
+        </div> -->
+        <app-error-message [control]="form.get('address.street')" label="Street" class="invalid-feedback"></app-error-message>
+      </div>
+
+      <div class="col-md-5">
+        <label for="district" class="form-label">District</label>
+        <input
+            formControlName="district"
+            [ngClass]="getCssClassInvalid('address.district')"
+            type="text"
+            class="form-control"
+            id="district">
+        <!-- <div *ngIf="isControlInvalid('address.district')" class="invalid-feedback">
+          District is required.
+        </div> -->
+        <app-error-message [control]="form.get('address.district')" label="District" class="invalid-feedback"></app-error-message>
+      </div>
+
+      <div class="col-md-4">
+        <label for="city" class="form-label">City</label>
+        <!-- <input
+            formControlName="city"
+            [ngClass]="getCssClassInvalid('address.city')"
+            type="text"
+            class="form-control"
+            id="city"> -->
+        <select
+            formControlName="city"
+            [ngClass]="getCssClassInvalid('address.city')"
+            class="form-select"
+            id="city">
+          <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+        </select>
+        <!-- <div *ngIf="isControlInvalid('address.city')" class="invalid-feedback">
+          City is required.
+        </div> -->
+        <app-error-message [control]="form.get('address.city')" label="City" class="invalid-feedback"></app-error-message>
+      </div>
+
+      <div class="col-md-3">
+        <label for="state" class="form-label">State</label>
+        <select
+            formControlName="state"
+            [ngClass]="getCssClassInvalid('address.state')"
+            (change)="getControl('address.city')?.setValue('')"
+            class="form-select"
+            id="state">
+          <option *ngFor="let state of states" [value]="state.abbreviation">{{ state.name }}</option>
+        </select>
+        <!-- <div *ngIf="isControlInvalid('address.state')" class="invalid-feedback">
+          State is required.
+        </div> -->
+        <app-error-message [control]="form.get('address.state')" label="State" class="invalid-feedback"></app-error-message>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <label for="position" class="form-label">Position</label>
+    <select
+        formControlName="position"
+        [compareWith]="comparePositions"
+        class="form-select"
+        id="position">
+      <option *ngFor="let position of positions" [ngValue]="position">{{ position.description }}</option>
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label for="tecnologies" class="form-label">Tecnologies</label>
+    <select
+        formControlName="tecnologies"
+        class="form-select"
+        id="tecnologies"
+        multiple
+        size="1">
+      <option *ngFor="let tecnology of tecnologies" [value]="tecnology.id">{{ tecnology.name }}</option>
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label" for="newsletter">Newsletter</label>
+    <div id="newsletter">
+      <div *ngFor="let newsletter of newsletters" class="form-check form-check-inline">
+        <input
+            formControlName="newsletter"
+            [value]="newsletter.value"
+            class="form-check-input"
+            type="radio"
+            name="newsletter"
+            [attr.id]="'newsletter' + newsletter.value">
+        <label
+            class="form-check-label"
+            [attr.for]="'newsletter' + newsletter.value">
+          {{ newsletter.description }}
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-check form-check-inline">
+      <input
+          formControlName="terms"
+          [ngClass]="getCssClassInvalid('terms')"
+          class="form-check-input"
+          type="checkbox"
+          id="terms">
+      <label class="form-check-label" for="terms">I accept the terms.</label>
+      <!-- <div *ngIf="isControlInvalid('terms')" class="invalid-feedback">
+        Please accept the terms.
+      </div> -->
+      <app-error-message [control]="form.get('terms')" label="Terms" class="invalid-feedback"></app-error-message>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <label class="form-label" for="frameworks">Frameworks</label>
+    <div id="frameworks">
+      <div
+          formArrayName="frameworks"
+          *ngFor="let control of getFrameworksControls(); index as i"
+          class="form-check form-check-inline">
+        <input
+            [formControlName]="i"
+            [ngClass]="getCssClassInvalid('frameworks')"
+            class="form-check-input"
+            type="checkbox"
+            [attr.id]="'frameworks' + frameworks![i]">
+        <label
+            [attr.for]="'frameworks' + frameworks![i]"
+            class="form-check-label">
+          {{ frameworks![i] }}
+        </label>
+      </div>
+      <!-- <div *ngIf="isControlInvalid('frameworks')" class="invalid-feedback d-block">
+        Please check at least one option.
+      </div> -->
+      <app-error-message [control]="form.get('frameworks')" label="Frameworks" class="invalid-feedback d-block"></app-error-message>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <button type="submit" class="btn btn-primary me-3">Submit</button>
+    <button
+        (click)="cancel()"
+        type="button"
+        class="btn btn-secondary me-3">
+      Cancel
+    </button>
+    <button
+        (click)="setPosition()"
+        type="button"
+        class="btn btn-info me-3">
+      Set Position
+    </button>
+    <button
+        (click)="setTecnologies()"
+        type="button"
+        class="btn btn-info">
+      Set Tecnologies
+    </button>
+  </div>
+
+  <app-debug-form [form]="form"></app-debug-form>
+
+</form>

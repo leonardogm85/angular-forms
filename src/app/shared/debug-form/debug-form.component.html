@@ -1,0 +1,12 @@
+<div *ngIf="form" class="card my-4">
+  <div class="card-header">
+    Form details
+  </div>
+  <div class="card-body">
+    <div><b>Valid:</b> {{ form.valid }}</div>
+    <div>
+      <b>Values:</b>
+      <pre>{{ form.value | json }}</pre>
+    </div>
+  </div>
+</div>

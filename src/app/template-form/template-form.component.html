@@ -1,0 +1,156 @@
+<form #f="ngForm" (ngSubmit)="submit(f)" class="row g-3">
+
+  <div class="col-md-12">
+    <label for="name" class="form-label">Name</label>
+    <input
+        [ngModel]="user.name"
+        #name="ngModel"
+        [ngClass]="getCssClassInvalid(name)"
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        required>
+    <div *ngIf="isControlInvalid(name)" class="invalid-feedback">
+      Please provide a valid name.
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <label for="email" class="form-label">Email</label>
+    <input
+        [ngModel]="user.email"
+        #email="ngModel"
+        [ngClass]="getCssClassInvalid(email)"
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        required
+        email>
+    <div *ngIf="isControlInvalid(email)" class="invalid-feedback">
+      Please provide a valid email.
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div ngModelGroup="address" class="row g-3">
+
+      <div class="col-md-3">
+        <label for="zipCode" class="form-label">ZIP Code</label>
+        <input
+            ngModel
+            #zipCode="ngModel"
+            [ngClass]="getCssClassInvalid(zipCode)"
+            (blur)="getAddressByZipCode(zipCode, f)"
+            type="text"
+            class="form-control"
+            id="zipCode"
+            name="zipCode"
+            required>
+        <div *ngIf="isControlInvalid(zipCode)" class="invalid-feedback">
+          Please provide a valid ZIP Code.
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label for="number" class="form-label">Number</label>
+        <input
+            ngModel
+            #number="ngModel"
+            [ngClass]="getCssClassInvalid(number)"
+            type="number"
+            class="form-control"
+            id="number"
+            name="number"
+            required>
+        <div *ngIf="isControlInvalid(number)" class="invalid-feedback">
+          Please provide a valid number.
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="complement" class="form-label">Complement</label>
+        <input
+            ngModel
+            #complement="ngModel"
+            type="text"
+            class="form-control"
+            id="complement"
+            name="complement">
+      </div>
+
+      <div class="col-md-12">
+        <label for="street" class="form-label">Street</label>
+        <input
+            ngModel
+            #street="ngModel"
+            [ngClass]="getCssClassInvalid(street)"
+            type="text"
+            class="form-control"
+            id="street"
+            name="street"
+            required>
+        <div *ngIf="isControlInvalid(street)" class="invalid-feedback">
+          Please provide a valid street.
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <label for="district" class="form-label">District</label>
+        <input
+            ngModel
+            #district="ngModel"
+            [ngClass]="getCssClassInvalid(district)"
+            type="text"
+            class="form-control"
+            id="district"
+            name="district"
+            required>
+        <div *ngIf="isControlInvalid(district)" class="invalid-feedback">
+          Please provide a valid district.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="city" class="form-label">City</label>
+        <input
+            ngModel
+            #city="ngModel"
+            [ngClass]="getCssClassInvalid(city)"
+            type="text"
+            class="form-control"
+            id="city"
+            name="city"
+            required>
+        <div *ngIf="isControlInvalid(city)" class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label for="state" class="form-label">State</label>
+        <input
+            ngModel
+            #state="ngModel"
+            [ngClass]="getCssClassInvalid(state)"
+            type="text"
+            class="form-control"
+            id="state"
+            name="state"
+            required>
+        <div *ngIf="isControlInvalid(state)" class="invalid-feedback">
+          Please provide a valid state.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
+  </div>
+
+  <app-debug-form [form]="f"></app-debug-form>
+
+</form>

@@ -1,0 +1,18 @@
+<label
+    [attr.for]="id"
+    class="form-label">
+  {{ label }}
+</label>
+<input
+    [ngClass]="cssClass"
+    [id]="id"
+    [type]="type"
+    [readonly]="isReadOnly"
+    [(ngModel)]="value"
+    (blur)="onTouched()"
+    class="form-control">
+<app-error-message
+    [control]="control"
+    [label]="label"
+    class="invalid-feedback">
+</app-error-message>
